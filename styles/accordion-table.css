@@ -1,4 +1,5 @@
 .accordion tr:nth-child( odd ) td {
+	cursor: pointer;
 	position: relative;
 }
 
