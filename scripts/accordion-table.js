@@ -8,8 +8,10 @@
 		this.$el = $el;
 
 		this.options = $.extend( true, {
-			activeClass: 'active',
-			collapsedClass: 'collapsed'
+			activeClass: 		'active',
+			collapsedClass: 	'collapsed',
+			contentSelector: 	'td:odd',
+			titleSelector: 		'td:even'
 		}, options );
 
 		this.initialize();
@@ -17,8 +19,8 @@
 
 	AccordionTable.prototype.initialize = function(){
 
-		this.$titles = this.$el.find( 'td:even' );
-		this.$content = this.$el.find( 'td:odd' )
+		this.$titles = this.$el.find( this.options.titleSelector );
+		this.$content = this.$el.find( this.options.contentSelector )
 			.addClass( this.options.collapsedClass );
 
 		this.setupBindings();
