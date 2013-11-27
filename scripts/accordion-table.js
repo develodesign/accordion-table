@@ -1,5 +1,9 @@
 /**
- * Created by paul on 25/11/2013.
+ * Accordion-table
+ *
+ * Copyright (c) 2013 Develo // Design - MIT License
+ *
+ * @requires jQuery
  */
 (function( $ ){
 
