@@ -2,12 +2,12 @@ table.accordion {
 	width: 100%;
 }
 
-.accordion tr:nth-child( odd ) td {
+.accordion-title {
 	cursor: pointer;
 	position: relative;
 }
 
-.accordion tr:nth-child( odd ) td:after {
+.accordion-title-control:after  {
 	bottom: 0;
 	color: #000;
 	content: '>';
@@ -19,14 +19,14 @@ table.accordion {
 	width: 20px;
 }
 
-.accordion tr:nth-child( odd ) td.active:after {
+.active .accordion-title-control:after {
 
 	-webkit-transform: rotate( 90deg );
 		-ms-transform: rotate( 90deg );
 			transform: rotate( 90deg );
 }
 
-.accordion tr:nth-child( even ) td {
+.accordion tr td {
 
 	line-height: inherit;
 	opacity: 1;
@@ -38,7 +38,7 @@ table.accordion {
 			transition: all 0.25s;
 }
 
-.accordion tr:nth-child( even ) td.collapsed {
+.accordion tr td.collapsed {
 	line-height: 0;
 	opacity: 0;
 }

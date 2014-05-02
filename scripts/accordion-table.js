@@ -15,6 +15,7 @@
 			activeClass: 		'active',
 			collapsedClass: 	'collapsed',
 			contentSelector: 	'td:odd',
+			pluginClass:		'accordion',
 			titleSelector: 		'td:even'
 		}, options );
 
@@ -24,10 +25,44 @@
 	AccordionTable.prototype.initialize = function(){
 
 		this.$titles = this.$el.find( this.options.titleSelector );
+
+		this._prepareTitles();
+
 		this.$content = this.$el.find( this.options.contentSelector )
 			.addClass( this.options.collapsedClass );
 
 		this.setupBindings();
+
+		this.$el.addClass( this.options.pluginClass );
+	};
+
+	/**
+	 * @private
+	 *
+	 * Came across a bug in firefox where relatively positioned table cells do not work. This means the controls
+	 * for the accordion table are not rendered in the correct place.
+	 * A work around for this is to add a relative container div and the controls are absolutely positioned within that.
+	 */
+	AccordionTable.prototype._prepareTitles = function(){
+
+		this.$titles.each( function( index, title ){
+
+			var $el = $( title );
+			var content = $el.html();
+
+			$el.empty();
+
+			var $control = $( '<div/>' )
+				.addClass( 'accordion-title-control' )
+			;
+			var $title = $( '<div/>' )
+				.addClass( 'accordion-title' )
+				.append( content )
+				.append( $control )
+				.appendTo( $el )
+			;
+
+		});
 	};
 
 	AccordionTable.prototype.setupBindings = function(){
@@ -70,7 +105,7 @@
 		this.$titles.removeClass( this.options.activeClass );
 	};
 
-	$.fn.accordionTable = function( options ) {
+	$.fn.develoAccordionTable = function( options ) {
 
 		this.each( function(){
 
