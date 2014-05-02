@@ -1,3 +1,7 @@
+table.accordion {
+	width: 100%;
+}
+
 .accordion tr:nth-child( odd ) td {
 	cursor: pointer;
 	position: relative;
@@ -5,7 +9,7 @@
 
 .accordion tr:nth-child( odd ) td:after {
 	bottom: 0;
-	color: #e8e8e8;
+	color: #000;
 	content: '>';
 	display: block;
 	position: absolute;
